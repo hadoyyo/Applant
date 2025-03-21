@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Pierwsza warstwa: istniejący kształt -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="@color/item"/>
+            <stroke android:width="1dp" android:color="@color/grey"/>
+            <padding android:left="10dp" android:right="10dp"/>
+        </shape>
+    </item>
+
+    <!-- Druga warstwa: ikona strzałki -->
+    <item
+        android:gravity="end|center_vertical"
+        android:right="10dp"
+        android:top="10dp"
+        android:bottom="10dp">
+        <vector android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <path
+                android:fillColor="@color/grey"
+                android:pathData="M7,10l5,5 5,-5z"/>
+        </vector>
+    </item>
+</layer-list>

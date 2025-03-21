@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#62d91f</color>
+    <color name="purple">#763eae</color>
+    <color name="background">#f9f9f9</color>
+    <color name="menu">#FFFFFFFF</color>
+    <color name="button">#FFFFFFFF</color>
+    <color name="selected">#763eae</color>
+    <color name="item">#FFFFFF</color>
+    <color name="grey">#BFBFBF</color>
+    <color name="text">#121214</color>
+    <color name="blue">#475DD0</color>
+    <color name="group_selected">#643692</color>
+</resources>

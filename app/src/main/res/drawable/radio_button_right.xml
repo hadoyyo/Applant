@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Stan wybrany -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/group_selected" />
+            <corners android:topRightRadius="24dp" android:bottomRightRadius="24dp" />
+        </shape>
+    </item>
+    <!-- Stan nie wybrany -->
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/purple" />
+            <corners android:topRightRadius="24dp" android:bottomRightRadius="24dp" />
+        </shape>
+    </item>
+</selector>

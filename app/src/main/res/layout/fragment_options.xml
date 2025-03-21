@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Options">
+
+    <!-- Nagłówek -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/options"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:textSize="20dp"
+        android:layout_margin="35dp"
+        android:layout_gravity="top|start"/>
+
+    <!-- Przełącznik powiadomień -->
+    <Switch
+        android:id="@+id/switch_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/watering_notifications"
+        android:textStyle="bold"
+        android:checked="true"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="35dp"
+        android:textColor="@color/purple"/>
+
+    <!-- Kontener dla przycisku ustawiania godziny i wyświetlania ustawionej godziny -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="35dp">
+
+        <Button
+            android:id="@+id/button_set_notification_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:backgroundTint="@drawable/button_background"
+            android:textColor="@color/button"
+            android:text="@string/watering_notifications_set" />
+
+        <TextView
+            android:id="@+id/text_notification_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08:00"
+            android:textSize="16sp"
+            android:paddingStart="16dp"/>
+    </LinearLayout>
+
+    <!-- Przełącznik trybu ciemnego -->
+    <Switch
+        android:id="@+id/switch_dark_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dark_mode"
+        android:textStyle="bold"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="35dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/purple"/>
+
+    <TextView
+        android:id="@+id/spinner_room_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/language"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:textSize="15dp"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginHorizontal="35dp"/>
+    <Spinner
+        android:id="@+id/spinner_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/languages"
+        android:background="@drawable/rounded_rectangle_with_arrow"
+        android:padding="5dp"
+        android:layout_marginHorizontal="35dp"
+        android:popupBackground="@color/item"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:textColor="@color/purple"
+        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

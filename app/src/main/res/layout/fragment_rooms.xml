@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RoomsFragment">
+
+    <!-- Tekst, który wyświetla się, gdy lista jest pusta -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rooms"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:textSize="20dp"
+        android:layout_margin="35dp"
+        android:layout_gravity="top|start"/>
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rooms_add_message"
+        android:textColor="@color/purple"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- RecyclerView do wyświetlania listy pokoi -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:visibility="gone" />
+
+    <!-- Przycisk FloatingActionButton do dodawania nowego pokoju -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="35dp"
+        android:contentDescription="@string/add_room"
+        app:srcCompat="@drawable/baseline_add_24"
+        app:backgroundTint="@color/button"
+        app:tint="@color/purple"
+        android:visibility="invisible"/>
+</FrameLayout>

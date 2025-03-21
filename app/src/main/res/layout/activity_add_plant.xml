@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!-- Nagłówek -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_plant"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="top|start"/>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:paddingTop="16dp"
+    android:paddingHorizontal="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/image_preview"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/plant_1"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/button_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:backgroundTint="@drawable/button_background"
+            android:textColor="@color/button"
+            android:layout_marginVertical="10dp"
+            android:text="@string/select_image" />
+
+        <TextView
+            android:id="@+id/edit_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:textSize="15dp"
+            android:layout_gravity="top|start"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <!-- Pole do wpisywania nazwy -->
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:background="@drawable/rounded_edittext"
+                android:padding="12dp"/>
+
+            <!-- Przycisk z ikonką -->
+
+            <ImageButton
+                android:id="@+id/button_suggest_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@drawable/button_background"
+                android:background="@drawable/circle_button_background"
+                android:src="@drawable/baseline_auto_awesome_24"
+                app:tint="@color/button"
+                android:layout_marginStart="6dp"
+                />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/edit_description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:textSize="15dp"
+            android:layout_gravity="top|start"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/edit_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Dodane pole dla pokoju -->
+        <TextView
+            android:id="@+id/spinner_room_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/room"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:textSize="15dp"
+            android:layout_gravity="top|start"
+            android:layout_marginBottom="5dp"/>
+        <Spinner
+            android:id="@+id/spinner_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle_with_arrow"
+            android:padding="14dp"
+            android:layout_marginBottom="10dp"
+            android:popupBackground="@color/item"/>
+
+        <!-- Dodane pole dla co ile dni podlewać -->
+        <TextView
+            android:id="@+id/edit_watering_interval_days_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/watering_frequency"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:textSize="15dp"
+            android:layout_gravity="top|start"
+            android:layout_marginBottom="5dp"/>
+        <EditText
+            android:id="@+id/edit_watering_interval_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <!-- Przycisk zapisu -->
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:backgroundTint="@drawable/button_background"
+            android:textColor="@color/button"
+            android:layout_marginVertical="10dp"
+            android:text="@string/save" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</LinearLayout>

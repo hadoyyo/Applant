@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">Applant</string>
+
+    <!-- fragment_plants -->
+    <string name="plants_add_message">Dodaj swoją pierwszą roślinę!</string>
+    <string name="add_plant">Dodaj roślinę</string>
+
+    <!-- fragment_plants -->
+    <string name="rooms_add_message">Dodaj swój pierwszy pokój!</string>
+    <string name="add_room">Dodaj pokój</string>
+
+    <!-- fragment_options -->
+    <string name="watering_notifications">Powiadomienia o podlewaniu</string>
+    <string name="watering_notifications_set">Ustaw godzinę powiadomień</string>
+    <string name="dark_mode">Tryb ciemny</string>
+    <string name="language">Język</string>
+
+    <!-- bottom_nav -->
+    <string name="plants">Rośliny</string>
+    <string name="rooms">Pokoje</string>
+    <string name="options">Opcje</string>
+
+    <!-- item_plant -->
+    <string name="genre">Gatunek</string>
+    <string name="plant_description">Opis rośliny</string>
+    <string name="room">Pokój</string>
+    <string name="watering_every">Podlewanie co 7 dni</string>
+
+    <string name="no_room_assigned">Nie przypisano pokoju</string>
+    <string name="requires_watering">Wymaga podlania!</string>
+    <string name="watering_every_day">Podlewanie codziennie</string>
+    <string name="watering_every_x_days">Podlewanie co %d dni</string>
+
+    <!-- add_plant -->
+    <string name="select_image">Wybierz zdjęcie</string>
+    <string name="name">Nazwa</string>
+    <string name="description">Opis</string>
+    <string name="watering_frequency">Częstotliwość podlewania (dni)</string>
+    <string name="save">Zapisz</string>
+
+
+    <string name="no_room_assigned_option">Nie przypisuj pokoju</string>
+    <string name="choose_image_source">Wybierz źródło zdjęcia</string>
+    <string name="take_photo">Zrób zdjęcie</string>
+    <string name="choose_from_gallery">Wybierz z galerii</string>
+    <string name="choose_default_image">Wybierz domyślne zdjęcie</string>
+    <string name="cancel">Anuluj</string>
+    <string name="choose_default_image_title">Wybierz domyślne zdjęcie</string>
+    <string name="name_required">Nazwa jest obowiązkowa!</string>
+
+    <string name="enable_notifications">Włącz powiadomienia</string>
+    <string name="enable_notifications_info">Aby otrzymywać powiadomienia o podlewaniu roślin, włącz powiadomienia w ustawieniach aplikacji.</string>
+    <string name="go_to_settings">Przejdź do ustawień</string>
+    <string name="later">Później</string>
+
+    <string name="edit_image">Edytuj zdjęcie</string>
+    <string name="note">Notatka</string>
+    <string name="waterings">Podlania</string>
+    <string name="no_waterings">❌ Brak podlań</string>
+    <string name="add_watering">Dodaj podlanie</string>
+    <string name="fertilizings">Nawożenia</string>
+    <string name="no_fertilizings">❌ Brak nawożeń</string>
+    <string name="add_fertilizing">Dodaj nawożenie</string>
+    <string name="repottings">Przesadzenia</string>
+    <string name="no_repottings">❌ Brak przesadzeń</string>
+    <string name="add_repotting">Dodaj przesadzenie</string>
+    <string name="save_changes">Zapisz zmiany</string>
+    <string name="remove_plant">Usuń roślinę</string>
+    <string name="watering_added">Dodano podlanie</string>
+    <string name="fertilizing_added">Dodano nawożenie</string>
+    <string name="repotting_added">Dodano przesadzenie</string>
+
+    <string name="yes">Tak</string>
+    <string name="confirmation">Potwierdzenie</string>
+    <string name="remove_plant_question">Czy na pewno chcesz usunąć tę roślinę?</string>
+    <string name="plant_removed_info">Roślina została usunięta</string>
+    <string name="no_plant_found">Nie znaleziono rośliny do usunięcia</string>
+
+    <string name="january">Styczeń</string>
+    <string name="february">Luty</string>
+    <string name="march">Marzec</string>
+    <string name="april">Kwiecień</string>
+    <string name="may">Maj</string>
+    <string name="june">Czerwiec</string>
+    <string name="july">Lipiec</string>
+    <string name="august">Sierpień</string>
+    <string name="september">Wrzesień</string>
+    <string name="october">Październik</string>
+    <string name="november">Listopad</string>
+    <string name="december">Grudzień</string>
+
+    <string name="date_from_future">Nie możesz dodać daty z przyszłości!</string>
+    <string name="plants_assigned">Rośliny przypisane do pokoju:</string>
+    <string name="no_plants_assigned">❌ Brak roślin przypisanych do tego pokoju</string>
+    <string name="water_all">Podlej wszystkie rośliny w pokoju</string>
+    <string name="remove_room">Usuń pokój</string>
+
+    <string name="remove">Usuń</string>
+
+    <string name="remove_room_question">Czy na pewno chcesz usunąć ten pokój?</string>
+    <string name="room_removed_info">Pokój został usunięty</string>
+    <string name="no_room_found">Nie znaleziono pokoju do usunięcia</string>
+
+    <string name="confirm_unassign_plant">Czy na pewno chcesz usunąć przypisanie rośliny \"%s\" do tego pokoju?</string>
+
+    <string name="plant_assign_removed">Usunięto przypisanie rośliny do pokoju</string>
+    <string name="no_plants_to_assign">Brak roślin do przypisania</string>
+    <string name="assign_select_plant">Wybierz roślinę do przypisania</string>
+    <string name="plant_has_been_asigned">Przypisano roślinę do pokoju</string>
+    <string name="all_plants_watered">Podlano wszystkie rośliny w pokoju</string>
+
+    <string name="notification_title">Czas podlać roślinę!</string>
+    <string name="notification_text">Roślina \"%s\" wymaga podlania.</string>
+
+    <string name="plant_details">Szczegóły rośliny</string>
+    <string name="room_details">Szczegóły pokoju</string>
+
+    <string name="version">Applant 1.3.2</string>
+
+    <string name="add_photo_to_identify">Dodaj zdjęcie rośliny, aby umożliwić identyfikację</string>
+    <string name="identification_failed">Nie udało się zidentyfikować rośliny</string>
+    <string name="image_processing_error">Błąd podczas przetwarzania zdjęcia</string>
+    <string name="identification_error">Błąd podczas identyfikacji rośliny: %s</string>
+    <string name="plant_identification_failed">Nie udało się zidentyfikować rośliny</string>
+    <string name="no_internet_connection">Aby zidentyfikować roślinę, połącz się z internetem</string>
+    <string name="add_photo_for_identification">Dodaj zdjęcie rośliny aby umożliwić identyfikację</string>
+
+</resources>

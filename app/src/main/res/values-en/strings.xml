@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">Applant</string>
+
+    <!-- fragment_plants -->
+    <string name="plants_add_message">Add your first plant!</string>
+    <string name="add_plant">Add a plant</string>
+
+    <!-- fragment_plants -->
+    <string name="rooms_add_message">Add your first room!</string>
+    <string name="add_room">Add a room</string>
+
+    <!-- fragment_options -->
+    <string name="watering_notifications">Watering notifications</string>
+    <string name="watering_notifications_set">Set the notification time</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="language">Language</string>
+
+    <!-- bottom_nav -->
+    <string name="plants">Plants</string>
+    <string name="rooms">Rooms</string>
+    <string name="options">Options</string>
+
+    <!-- item_plant -->
+    <string name="genre">Genre</string>
+    <string name="plant_description">Plant description</string>
+    <string name="room">Room</string>
+    <string name="watering_every">Watering every 7 days</string>
+
+    <string name="no_room_assigned">No room assigned</string>
+    <string name="requires_watering">Requires watering!</string>
+    <string name="watering_every_day">Watering every day</string>
+    <string name="watering_every_x_days">Watering every %d days</string>
+
+    <!-- add_plant -->
+    <string name="select_image">Select image</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="watering_frequency">Watering frequency (days)</string>
+    <string name="save">Save</string>
+
+    <string name="no_room_assigned_option">Do not assign a room</string>
+    <string name="choose_image_source">Choose image source</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_from_gallery">Choose from Gallery</string>
+    <string name="choose_default_image">Choose Default Image</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_default_image_title">Choose Default Image</string>
+    <string name="name_required">Name is required!</string>
+
+    <string name="enable_notifications">Enable notifications</string>
+    <string name="enable_notifications_info">To receive plant watering notifications, turn on notifications in the app settings.</string>
+    <string name="go_to_settings">Go to settings</string>
+    <string name="later">Later</string>
+
+    <string name="edit_image">Edit image</string>
+    <string name="note">Note</string>
+    <string name="waterings">Waterings</string>
+    <string name="no_waterings">❌ No waterings</string>
+    <string name="add_watering">Add watering</string>
+    <string name="fertilizings">Fertilizings</string>
+    <string name="no_fertilizings">❌ No fertilizings</string>
+    <string name="add_fertilizing">Add fertilizings</string>
+    <string name="repottings">Repottings</string>
+    <string name="no_repottings">❌ No repottings</string>
+    <string name="add_repotting">Add repotting</string>
+    <string name="save_changes">Save changes</string>
+    <string name="remove_plant">Remove plant</string>
+    <string name="watering_added">Watering added</string>
+    <string name="fertilizing_added">Fertilizing added</string>
+    <string name="repotting_added">Repotting added</string>
+
+    <string name="yes">Yes</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="remove_plant_question">Are you sure you want to remove this plant?</string>
+    <string name="plant_removed_info">The plant has been removed</string>
+    <string name="no_plant_found">No plant found for removal</string>
+
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <string name="date_from_future">You cannot add a date from the future!</string>
+    <string name="plants_assigned">Plants assigned to this room:</string>
+    <string name="no_plants_assigned">❌ No plants assigned to this room</string>
+    <string name="water_all">Water all plants in the room</string>
+    <string name="remove_room">Remove room</string>
+
+    <string name="remove">Remove</string>
+
+    <string name="remove_room_question">Are you sure you want to delete this room?</string>
+    <string name="room_removed_info">The room has been removed</string>
+    <string name="no_room_found">No room found for removal</string>
+
+    <string name="confirm_unassign_plant">Are you sure you want to unassign the plant \"%s\" from this room?</string>
+
+    <string name="plant_assign_removed">Plant assignment to room removed</string>
+    <string name="no_plants_to_assign">No plants to assign</string>
+    <string name="assign_select_plant">Select a plant to assign</string>
+    <string name="plant_has_been_asigned">A plant has been assigned to the room</string>
+    <string name="all_plants_watered">All plants in the room have been watered</string>
+
+    <string name="notification_title">Time to water your plant!</string>
+    <string name="notification_text">The plant \"%s\" needs watering.</string>
+
+    <string name="plant_details">Plant details</string>
+    <string name="room_details">Room details</string>
+
+    <string name="version">Applant 1.3.2</string>
+
+
+    <string name="add_photo_to_identify">Add a photo of the plant to enable identification</string>
+    <string name="identification_failed">Failed to identify the plant</string>
+    <string name="image_processing_error">Error while processing the image</string>
+    <string name="identification_error">Error during plant identification: %s</string>
+    <string name="plant_identification_failed">Failed to identify the plant</string>
+    <string name="no_internet_connection">An internet connection is required to identify the plant</string>
+    <string name="add_photo_for_identification">Add a photo of the plant to enable identification</string>
+
+</resources>
