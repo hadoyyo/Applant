@@ -11,7 +11,7 @@ class CustomRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(c
     var gestureDetector: GestureDetector? = null
 
     override fun onInterceptTouchEvent(e: MotionEvent): Boolean {
-        gestureDetector?.onTouchEvent(e) // Przekaż zdarzenie do GestureDetector
+        gestureDetector?.onTouchEvent(e)
         return super.onInterceptTouchEvent(e)
     }
 }

@@ -7,12 +7,21 @@
     android:padding="8dp">
 
     <!-- Zdjęcie rośliny -->
-    <ImageView
-        android:id="@+id/image_plant"
+    <androidx.cardview.widget.CardView
         android:layout_width="80dp"
         android:layout_height="80dp"
+        app:cardCornerRadius="8dp"
         android:layout_marginEnd="16dp"
-        android:scaleType="centerCrop" />
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/image_plant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@color/background"
+            android:adjustViewBounds="true"/>
+    </androidx.cardview.widget.CardView>
 
     <!-- Nazwa i opis rośliny -->
     <LinearLayout
@@ -26,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/text_description"
@@ -43,5 +53,8 @@
         app:backgroundTint="@android:color/holo_red_light"
         android:textColor="@color/button"
         android:text="@string/remove"
-        android:layout_gravity="center_vertical"/>
+        android:fontFamily="@font/delta"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="5dp"
+        android:textSize="11dp"/>
 </LinearLayout>

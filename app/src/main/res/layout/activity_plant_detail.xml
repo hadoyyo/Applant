@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/plant_details"
-        android:textStyle="bold"
+        android:fontFamily="@font/delta"
         android:textColor="@color/purple"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="35dp"
         android:paddingBottom="16dp"
@@ -33,12 +33,22 @@
             android:paddingBottom="16dp">
 
             <!-- Plant Image -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                android:layout_gravity="center">
+
             <ImageView
                 android:id="@+id/image_preview"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/plant_1"
-                android:layout_gravity="center" />
+                android:scaleType="centerCrop"
+                android:background="@color/background"
+                android:adjustViewBounds="true"/>
+            </androidx.cardview.widget.CardView>
 
             <!-- Change Image Button -->
             <Button
@@ -49,7 +59,8 @@
                 android:layout_gravity="center"
                 app:backgroundTint="@drawable/button_background"
                 android:textColor="@color/button"
-                android:layout_marginVertical="10dp"/>
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/delta"/>
 
             <!-- Plant Name -->
             <TextView
@@ -57,9 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
-                android:textStyle="bold"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/purple"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="5dp"/>
 
@@ -101,9 +112,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/description"
-                android:textStyle="bold"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/purple"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="5dp"/>
 
@@ -122,9 +133,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/room"
-                android:textStyle="bold"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/purple"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="5dp"/>
 
@@ -143,9 +154,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/watering_frequency"
-                android:textStyle="bold"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/purple"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="5dp"/>
 
@@ -164,9 +175,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/note"
-                android:textStyle="bold"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/purple"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="5dp"/>
 
@@ -200,13 +211,14 @@
                     android:text="@string/waterings"
                     android:button="@null"
                     android:paddingVertical="12dp"
-                    android:paddingEnd="12dp"
-                    android:paddingStart="14dp"
+                    android:paddingEnd="3dp"
+                    android:paddingStart="3dp"
                     android:background="@drawable/radio_button_left"
                     android:layout_weight="1"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/delta"
                     android:textColor="@color/button"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/radio_fertilizing"
@@ -214,12 +226,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fertilizings"
                     android:button="@null"
-                    android:padding="12dp"
+                    android:padding="3dp"
                     android:background="@drawable/radio_button_middle"
                     android:layout_weight="1"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/delta"
                     android:textColor="@color/button"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/radio_repotting"
@@ -229,12 +242,13 @@
                     android:background="@drawable/radio_button_right"
                     android:button="@null"
                     android:paddingVertical="12dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="14dp"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="3dp"
                     android:text="@string/repottings"
                     android:textColor="@color/button"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:fontFamily="@font/delta"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
             </RadioGroup>
 
             <!-- Watering Section -->
@@ -244,7 +258,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/no_waterings"
                 android:textColor="@color/text"
-                android:textSize="15dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/delta"
                 android:visibility="gone"
                 android:gravity="center"
                 android:padding="8dp"
@@ -255,6 +270,7 @@
                 android:id="@+id/recycler_watering"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/delta"
                 android:layout_marginTop="2dp"
                 android:visibility="gone"/>
 
@@ -263,6 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_watering"
+                android:fontFamily="@font/delta"
                 android:layout_gravity="center"
                 app:backgroundTint="@color/green"
                 android:textColor="@color/button"
@@ -277,7 +294,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/no_fertilizings"
                 android:textColor="@color/text"
-                android:textSize="15dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/delta"
                 android:visibility="gone"
                 android:gravity="center"
                 android:padding="8dp"
@@ -288,6 +306,7 @@
                 android:id="@+id/recycler_fertilizing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/delta"
                 android:layout_marginTop="2dp"
                 android:visibility="gone"/>
 
@@ -297,6 +316,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_fertilizing"
                 android:layout_gravity="center"
+                android:fontFamily="@font/delta"
                 app:backgroundTint="@color/green"
                 android:textColor="@color/button"
                 android:layout_marginTop="1dp"
@@ -309,8 +329,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_repottings"
+                android:fontFamily="@font/delta"
                 android:textColor="@color/text"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:visibility="gone"
                 android:gravity="center"
                 android:padding="8dp"
@@ -320,6 +341,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_repotting"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/delta"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:visibility="gone"/>
@@ -329,6 +351,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_repotting"
+                android:fontFamily="@font/delta"
                 android:layout_gravity="center"
                 app:backgroundTint="@color/green"
                 android:textColor="@color/button"
@@ -349,6 +372,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/save_changes"
+                    android:fontFamily="@font/delta"
                     app:backgroundTint="@drawable/button_background"
                     android:textColor="@color/button"
                     android:layout_marginEnd="10dp"/>
@@ -358,6 +382,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/remove_plant"
+                    android:fontFamily="@font/delta"
                     android:backgroundTint="@android:color/holo_red_light"
                     android:textColor="@color/button"/>
             </LinearLayout>

@@ -108,17 +108,17 @@ class AddRoomActivity : AppCompatActivity() {
         val recyclerView = RecyclerView(this).apply {
             layoutManager = GridLayoutManager(this@AddRoomActivity, 3) // 3 kolumny
             adapter = ImageAdapter(defaultImages) { selectedImageResId ->
-                // Po wybraniu zdjęcia ustaw je w ImageView
+
                 imageView.setImageResource(selectedImageResId)
-                imageView.tag = selectedImageResId // Zapisz ID zasobu jako tag
-                selectedImageUri = null // Resetowanie URI, ponieważ używamy domyślnego zdjęcia
+                imageView.tag = selectedImageResId
+                selectedImageUri = null
 
                 // Zamknij dialog po wybraniu zdjęcia
                 alertDialog?.dismiss()
             }
         }
 
-        // Tworzenie i wyświetlenie dialogu z siatką zdjęć
+
         alertDialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
             .setTitle(getString(R.string.choose_default_image_title))
             .setView(recyclerView)
@@ -229,7 +229,7 @@ class AddRoomActivity : AppCompatActivity() {
         val description = descriptionEditText.text.toString().trim()
 
         if (name.isEmpty()) {
-            Snackbar.make(saveButton, getString(R.string.name_required), Snackbar.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.name_required), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -247,7 +247,7 @@ class AddRoomActivity : AppCompatActivity() {
             description = description,
             imageUri = selectedImageUri?.toString(),
             defaultImageResId = defaultImageResId,
-            isDefaultImage = defaultImageResId != null // Ustaw, czy zdjęcie jest domyślne
+            isDefaultImage = defaultImageResId != null
         )
 
         val rooms = roomStorage.getRooms().toMutableList()

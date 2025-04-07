@@ -22,14 +22,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.materialswitch.MaterialSwitch
 import java.util.*
 
 class Options : Fragment() {
 
-    private lateinit var switchNotifications: Switch
-    private lateinit var switchDarkMode: Switch
+    private lateinit var switchNotifications: MaterialSwitch
+    private lateinit var switchDarkMode: MaterialSwitch
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var notificationTimeButton: Button
     private lateinit var notificationTimeTextView: TextView
@@ -178,6 +180,22 @@ class Options : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<NestedScrollView>(R.id.nested_scroll)?.setOnTouchListener(
+            OnSwipeTouchListener(requireContext()) { direction ->
+                (activity as? MainActivity)?.let { mainActivity ->
+                    when (direction) {
+                        "left" -> mainActivity.onSwipeLeft()
+                        "right" -> mainActivity.onSwipeRight()
+                    }
+                }
+                true
+            }
+        )
+    }
+
     private fun setAppLanguage(languageCode: String) {
         val resources = requireContext().resources
         val configuration = resources.configuration
@@ -186,7 +204,6 @@ class Options : Fragment() {
         configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
 
-        // Restart activity, aby zastosować zmiany językowe
         val intent = Intent(requireContext(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
@@ -217,7 +234,7 @@ class Options : Fragment() {
 
     private fun updateSwitchState(areNotificationsEnabled: Boolean) {
         if (!areNotificationsEnabled) {
-            // Jeśli powiadomienia są wyłączone w systemie, wyłącz przełącznik i ustaw go na "off"
+
             switchNotifications.isChecked = false
         } else {
             // Jeśli powiadomienia są włączone w systemie, ustaw stan zgodnie z SharedPreferences
