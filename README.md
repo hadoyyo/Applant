@@ -46,7 +46,7 @@ Device with Android 8.0 (SDK 26) or later.
 3. install the application.
 
 ## Screenshots
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
     <img src="./ss/ss1.jpg" width="49%"/> <img src="./ss/ss2.jpg" width="49%"/>
     <img src="./ss/ss3.jpg" width="49%"/> <img src="./ss/ss4.jpg" width="49%"/>
     <img src="./ss/ss5.jpg" width="49%"/> <img src="./ss/ss6.jpg" width="49%"/>
