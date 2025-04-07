@@ -46,3 +46,6 @@ Device with Android 8.0 (SDK 26) or later.
 3. install the application.
 
 ## Screenshots
+
+<img src="./ss/ss1.jpg" width="49%"/> <img src="./ss/ss2.jpg" width="49%"/>
+<img src="./ss/ss3.jpg" width="49%"/> <img src="./ss/ss4.jpg" width="49%"/>
