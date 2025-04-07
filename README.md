@@ -52,7 +52,7 @@ Device with Android 8.0 (SDK 26) or later.
 <img src="./ss/ss5.jpg" width="49%"/> <img src="./ss/ss6.jpg" width="49%"/>
 <img src="./ss/ss7.jpg" width="49%"/> <img src="./ss/ss8.jpg" width="49%"/>
 <img src="./ss/ss9.jpg" width="49%"/> 
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<div style="display: flex; justify-content: center; align-items: center;">
     <img src="./ss/ss10.jpg" width="49%"/>
 </div>
 <img src="./ss/ss11.jpg" width="49%"/> <img src="./ss/ss12.jpg" width="49%"/>
