@@ -1,11 +1,8 @@
-//Rooms.kt
 package pl.example.applant
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,16 +21,9 @@ class Rooms : Fragment() {
     private lateinit var roomAdapter: RoomAdapter
     private lateinit var roomStorage: RoomStorage
 
-    private val handler = Handler(Looper.getMainLooper())
-    private val updateRunnable = object : Runnable {
-        override fun run() {
-            updateUI()
-            handler.postDelayed(this, 1000)
-        }
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_rooms, container, false)
@@ -41,18 +31,23 @@ class Rooms : Fragment() {
         recyclerView = view.findViewById(R.id.recycler_view)
         emptyTextView = view.findViewById(R.id.text_empty)
 
+        // Konfiguracja RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         roomStorage = RoomStorage(requireContext())
         roomAdapter = RoomAdapter(roomStorage.getRooms())
         recyclerView.adapter = roomAdapter
 
-        handler.post(updateRunnable)
-
+        // Opóźnione pokazanie FAB z animacją
         fab.postDelayed({
-            fab.visibility = View.VISIBLE
-            val anim = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-            fab.startAnimation(anim)
+            if (isAdded) {
+                fab.visibility = View.VISIBLE
+                val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
+                fab.startAnimation(anim)
+            }
         }, 400)
+
+        // Inicjalna aktualizacja UI
+        updateUI()
 
         return view
     }
@@ -61,19 +56,30 @@ class Rooms : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fab.setOnClickListener {
-            val intent = Intent(requireContext(), AddRoomActivity::class.java)
-            startActivityForResult(intent, REQUEST_ADD_ROOM)
+            if (isAdded) {
+                val intent = Intent(requireContext(), AddRoomActivity::class.java)
+                startActivityForResult(intent, REQUEST_ADD_ROOM)
+            }
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_ADD_ROOM && resultCode == Activity.RESULT_OK) {
+        if (isAdded && requestCode == REQUEST_ADD_ROOM && resultCode == Activity.RESULT_OK) {
+            updateUI()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isAdded) {
             updateUI()
         }
     }
 
     private fun updateUI() {
+        if (!isAdded) return
+
         val rooms = roomStorage.getRooms()
 
         if (rooms.isEmpty()) {
@@ -84,11 +90,6 @@ class Rooms : Fragment() {
             emptyTextView.visibility = View.GONE
             roomAdapter.updateRooms(rooms)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        handler.removeCallbacks(updateRunnable)
     }
 
     companion object {

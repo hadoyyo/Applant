@@ -5,9 +5,11 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.activity.enableEdgeToEdge
@@ -21,6 +23,7 @@ import pl.example.applant.databinding.ActivityMainBinding
 import java.util.Locale
 import android.view.Window
 import android.view.WindowManager
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        adjustBottomNavMargin()
+
+        setupSwipeGestures()
+
         enableEdgeToEdge()
 
         // Inicjalizacja GestureDetector
@@ -102,6 +110,7 @@ class MainActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.plants -> replaceFragment(Plants(), R.id.plants)
                     R.id.rooms -> replaceFragment(Rooms(), R.id.rooms)
+                    R.id.diagnose -> replaceFragment(DiagnoseFragment(), R.id.diagnose)
                     R.id.options -> replaceFragment(Options(), R.id.options)
                 }
             }
@@ -112,6 +121,53 @@ class MainActivity : AppCompatActivity() {
         if (!areNotificationsEnabled()) {
             showNotificationPermissionDialog()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("CURRENT_TAB", currentTab)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        currentTab = savedInstanceState.getInt("CURRENT_TAB", R.id.plants)
+
+        // Przywróć fragment po zmianie orientacji
+        val fragment = when (currentTab) {
+            R.id.plants -> Plants()
+            R.id.rooms -> Rooms()
+            R.id.diagnose -> DiagnoseFragment()
+            R.id.options -> Options()
+            else -> Plants()
+        }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
+
+        binding.bottomNavigationView.selectedItemId = currentTab
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        adjustBottomNavMargin()
+    }
+
+    private fun adjustBottomNavMargin() {
+        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        val marginBottom = if (isLandscape) 0 else -50 // w dp
+
+        val params = binding.bottomNavigationView.layoutParams as ConstraintLayout.LayoutParams
+        params.bottomMargin = marginBottom.dpToPx(this)
+        binding.bottomNavigationView.layoutParams = params
+    }
+
+    fun Int.dpToPx(context: Context): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            this.toFloat(),
+            context.resources.displayMetrics
+        ).toInt()
     }
 
     private fun changeStatusBarColor(color: String) {
@@ -152,46 +208,68 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onSwipeRight() {
+    fun onSwipeRight() {
         when (currentTab) {
             R.id.rooms -> {
                 replaceFragment(Plants(), R.id.plants)
                 binding.bottomNavigationView.selectedItemId = R.id.plants
             }
-            R.id.options -> {
+            R.id.diagnose -> {
                 replaceFragment(Rooms(), R.id.rooms)
                 binding.bottomNavigationView.selectedItemId = R.id.rooms
+            }
+            R.id.options -> {
+                replaceFragment(DiagnoseFragment(), R.id.diagnose)
+                binding.bottomNavigationView.selectedItemId = R.id.diagnose
             }
         }
     }
 
-    private fun onSwipeLeft() {
+    fun onSwipeLeft() {
         when (currentTab) {
             R.id.plants -> {
                 replaceFragment(Rooms(), R.id.rooms)
                 binding.bottomNavigationView.selectedItemId = R.id.rooms
             }
             R.id.rooms -> {
+                replaceFragment(DiagnoseFragment(), R.id.diagnose)
+                binding.bottomNavigationView.selectedItemId = R.id.diagnose
+            }
+            R.id.diagnose -> {
                 replaceFragment(Options(), R.id.options)
                 binding.bottomNavigationView.selectedItemId = R.id.options
             }
         }
     }
 
-    private fun replaceFragment(fragment: Fragment, newTab: Int) {
+    fun replaceFragment(fragment: Fragment, newTab: Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        // Wybór animacji w zależności od kierunku przejścia
         when {
+            // Przejścia w prawo (od lewej do prawej)
             (currentTab == R.id.plants && newTab == R.id.rooms) ||
+                    (currentTab == R.id.rooms && newTab == R.id.diagnose) ||
                     (currentTab == R.id.rooms && newTab == R.id.options) ||
+                    (currentTab == R.id.diagnose && newTab == R.id.options) ||
+                    (currentTab == R.id.plants && newTab == R.id.diagnose) ||
                     (currentTab == R.id.plants && newTab == R.id.options) -> {
-                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
+                fragmentTransaction.setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
             }
-            (currentTab == R.id.options && newTab == R.id.rooms) ||
+
+            // Przejścia w lewo (od prawej do lewej)
+            (currentTab == R.id.options && newTab == R.id.diagnose) ||
+                    (currentTab == R.id.diagnose && newTab == R.id.rooms) ||
+                    (currentTab == R.id.diagnose && newTab == R.id.plants) ||
                     (currentTab == R.id.rooms && newTab == R.id.plants) ||
+                    (currentTab == R.id.options && newTab == R.id.rooms) ||
                     (currentTab == R.id.options && newTab == R.id.plants) -> {
-                fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                fragmentTransaction.setCustomAnimations(
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
             }
         }
 
@@ -217,7 +295,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showNotificationPermissionDialog() {
-        // Tworzenie niestandardowego AlertDialog z zastosowanym stylem
+
         val dialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
             .setTitle(getString(R.string.enable_notifications))
             .setMessage(R.string.enable_notifications_info)
@@ -242,6 +320,15 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun setupSwipeGestures() {
+        binding.main.setOnTouchListener(OnSwipeTouchListener(this) { direction ->
+            when (direction) {
+                "left" -> onSwipeLeft()
+                "right" -> onSwipeRight()
+            }
+        })
+    }
+
     private fun setAppLanguage(languageCode: String) {
         val resources = resources
         val configuration = resources.configuration
@@ -250,10 +337,9 @@ class MainActivity : AppCompatActivity() {
         configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
 
-        // Aktualizuj teksty w BottomNavigationView
+
         updateBottomNavigationViewTexts(languageCode)
 
-        // Ustaw flagę, że język został zmieniony
         val sharedPreferences = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
         sharedPreferences.edit().putBoolean("language_changed", false).apply()
     }
@@ -262,10 +348,12 @@ class MainActivity : AppCompatActivity() {
         val plantsText = getString(R.string.plants)
         val roomsText = getString(R.string.rooms)
         val optionsText = getString(R.string.options)
+        val diagnoseText = getString(R.string.diagnose)
 
         val menu = binding.bottomNavigationView.menu
         menu.findItem(R.id.plants).title = plantsText
         menu.findItem(R.id.rooms).title = roomsText
         menu.findItem(R.id.options).title = optionsText
+        menu.findItem(R.id.diagnose).title = diagnoseText
     }
 }

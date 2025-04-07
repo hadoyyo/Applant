@@ -194,12 +194,12 @@ class AddPlantActivity : AppCompatActivity() {
     private fun chooseDefaultImage() {
         // Tworzenie RecyclerView
         val recyclerView = RecyclerView(this).apply {
-            layoutManager = GridLayoutManager(this@AddPlantActivity, 3) // 3 kolumny
+            layoutManager = GridLayoutManager(this@AddPlantActivity, 3)
             adapter = ImageAdapter(defaultImages) { selectedImageResId ->
                 // Po wybraniu zdjęcia ustaw je w ImageView
                 imageView.setImageResource(selectedImageResId)
-                imageView.tag = selectedImageResId // Zapisz ID zasobu jako tag
-                selectedImageUri = null // Resetowanie URI, ponieważ używamy domyślnego zdjęcia
+                imageView.tag = selectedImageResId
+                selectedImageUri = null
 
                 // Zamknij dialog po wybraniu zdjęcia
                 alertDialog?.dismiss()
@@ -283,7 +283,7 @@ class AddPlantActivity : AppCompatActivity() {
     }
 
     private fun identifyPlantFromImage() {
-        // Sprawdź, czy urządzenie ma połączenie z internetem
+
         if (!isNetworkAvailable()) {
             Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show()
             return
@@ -300,7 +300,7 @@ class AddPlantActivity : AppCompatActivity() {
                 suggestNameButton.isEnabled = true // Włącz przycisk po zakończeniu
 
                 if (plantName != null) {
-                    nameEditText.setText(plantName) // Wpisz nazwę rośliny w pole
+                    nameEditText.setText(plantName)
                 } else {
                     Toast.makeText(this, R.string.plant_identification_failed, Toast.LENGTH_SHORT).show()
                 }
@@ -342,7 +342,7 @@ class AddPlantActivity : AppCompatActivity() {
             room = room,
             imageUri = selectedImageUri?.toString(),
             defaultImageResId = defaultImageResId,
-            isDefaultImage = defaultImageResId != null // Ustaw, czy zdjęcie jest domyślne
+            isDefaultImage = defaultImageResId != null
         )
 
         val plants = plantStorage.getPlants().toMutableList()

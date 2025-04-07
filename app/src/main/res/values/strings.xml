@@ -113,8 +113,8 @@
 
     <string name="plant_details">Plant details</string>
     <string name="room_details">Room details</string>
-    
-    <string name="version">Applant 1.3.2</string>
+
+    <string name="version">pplant 1.4.3</string>
 
 
     <string name="add_photo_to_identify">Add a photo of the plant to enable identification</string>
@@ -124,5 +124,33 @@
     <string name="plant_identification_failed">Failed to identify the plant</string>
     <string name="no_internet_connection">An internet connection is required to identify the plant</string>
     <string name="add_photo_for_identification">Add a photo of the plant to enable identification</string>
+
+    <string name="diagnose">Diagnose</string>
+    <string name="diagnose_plant_instruction">Click the button below to diagnose your plant</string>
+    <string name="identify_plant">Diagnose plant</string>
+    <string name="identify_again">Diagnose Again</string>
+    <string name="diagnosis_results">Diagnosis Results</string>
+    <string name="disease_name">Disease Name</string>
+    <string name="treatment">Treatment</string>
+    <string name="no_description_available">No description available</string>
+    <string name="no_treatment_info_available">No treatment information available</string>
+    <string name="no_disease_detected">No specific disease detected</string>
+    <string name="plant_needs">Plant Needs</string>
+    <string name="no_specific_needs_detected">No specific needs detected</string>
+    <string name="no_health_assessment_available">No health assessment available</string>
+    <string name="no_results_found">No results found. Please try with a clearer image.</string>
+    <string name="error_processing_results">Error processing results</string>
+    <string name="unknown">Unknown</string>
+
+    <string name="plant_status_healthy">HEALTHY</string>
+    <string name="plant_status_diseased">PROBLEMS DETECTED</string>
+    <string name="top_diseases">Most probable causes:</string>
+    <string name="no_diseases">No problems detected</string>
+    <string name="probability">Probability</string>
+    <string name="healthy_message">Looks like your plant has nothing to worry about!</string>
+    <string name="processing_error">Response processing error: %1$s</string>
+    <string name="image_load_error">Image loading error</string>
+    <string name="api_key_error">Sorry, plant diagnosis is temporarily unavailable.</string>
+
 
 </resources>

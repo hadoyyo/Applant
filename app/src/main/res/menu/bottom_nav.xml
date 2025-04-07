@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:title="@string/plants"
         android:id="@+id/plants"
         android:icon="@drawable/baseline_local_florist_24"/>
     <item android:title="@string/rooms"
         android:id="@+id/rooms"
         android:icon="@drawable/baseline_door_front_24"/>
+    <item android:title="@string/diagnose"
+        android:id="@+id/diagnose"
+        android:icon="@drawable/baseline_health_and_safety_24"/>
     <item android:title="@string/options"
         android:id="@+id/options"
         android:icon="@drawable/baseline_more_horiz_24"/>

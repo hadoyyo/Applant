@@ -13,12 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_plant"
-        android:textStyle="bold"
         android:textColor="@color/purple"
         android:textSize="20dp"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="35dp"
-        android:layout_gravity="top|start"/>
+        android:layout_gravity="top|start"
+        android:fontFamily="@font/delta"/>
 
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
@@ -37,12 +37,22 @@
         android:background="@color/background"
         android:paddingHorizontal="16dp">
 
-        <ImageView
-            android:id="@+id/image_preview"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/plant_1"
-            android:layout_gravity="center" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/plant_1"
+                android:scaleType="centerCrop"
+                android:background="@color/background"
+                android:adjustViewBounds="true"/>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button_add_image"
@@ -52,18 +62,19 @@
             app:backgroundTint="@drawable/button_background"
             android:textColor="@color/button"
             android:layout_marginVertical="10dp"
-            android:text="@string/select_image" />
+            android:text="@string/select_image"
+            android:fontFamily="@font/delta"/>
 
         <TextView
             android:id="@+id/edit_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textStyle="bold"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/delta"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -124,7 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/room"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -144,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/watering_frequency"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -168,7 +179,8 @@
             app:backgroundTint="@drawable/button_background"
             android:textColor="@color/button"
             android:layout_marginVertical="10dp"
-            android:text="@string/save" />
+            android:text="@string/save"
+            android:fontFamily="@font/delta"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 </LinearLayout>

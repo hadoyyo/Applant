@@ -3,8 +3,6 @@ package pl.example.applant
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,16 +22,6 @@ class Plants : Fragment() {
     private lateinit var plantStorage: PlantStorage
     private lateinit var roomStorage: RoomStorage
 
-    private val handler = Handler(Looper.getMainLooper())  // Handler for the main thread
-    private val updateRunnable = object : Runnable {
-        override fun run() {
-            if (isAdded && !isDetached && !isRemoving) {  // Sprawdź, czy fragment jest dołączony
-                updateUI()  // Call updateUI
-            }
-            handler.postDelayed(this, 1000)  // Re-run this every 1000ms (1 second)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,17 +38,17 @@ class Plants : Fragment() {
         plantAdapter = PlantAdapter(plantStorage.getPlants())
         recyclerView.adapter = plantAdapter
 
-        // Start the updateRunnable to call updateUI every second
-        handler.post(updateRunnable)
-
         // Opóźnione pokazanie FAB z animacją
         fab.postDelayed({
-            if (isAdded && !isDetached && !isRemoving) {  // Sprawdź, czy fragment jest dołączony
+            if (isAdded) {
                 fab.visibility = View.VISIBLE
                 val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
                 fab.startAnimation(anim)
             }
         }, 400)
+
+        // Inicjalna aktualizacja UI
+        updateUI()
 
         return view
     }
@@ -68,9 +56,8 @@ class Plants : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Obsługa kliknięcia FAB
         fab.setOnClickListener {
-            if (isAdded && !isDetached && !isRemoving) {  // Sprawdź, czy fragment jest dołączony
+            if (isAdded) {
                 val intent = Intent(requireContext(), AddPlantActivity::class.java)
                 startActivityForResult(intent, REQUEST_ADD_PLANT)
             }
@@ -79,7 +66,7 @@ class Plants : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (isAdded && !isDetached && !isRemoving) {  // Sprawdź, czy fragment jest dołączony
+        if (isAdded) {
             when {
                 requestCode == REQUEST_ADD_PLANT && resultCode == Activity.RESULT_OK -> updateUI()
                 requestCode == REQUEST_EDIT_PLANT && resultCode == Activity.RESULT_OK -> updateUI()
@@ -88,29 +75,31 @@ class Plants : Fragment() {
         }
     }
 
-    private fun updateUI() {
-        if (isAdded && !isDetached && !isRemoving) {  // Sprawdź, czy fragment jest dołączony
-            val plants = plantStorage.getPlants()
-
-            if (plants.isEmpty()) {
-                recyclerView.visibility = View.GONE
-                emptyTextView.visibility = View.VISIBLE
-            } else {
-                recyclerView.visibility = View.VISIBLE
-                emptyTextView.visibility = View.GONE
-                plantAdapter.updatePlants(plants)
-            }
+    override fun onResume() {
+        super.onResume()
+        if (isAdded) {
+            updateUI()
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        handler.removeCallbacks(updateRunnable)  // Stop the periodic update when the fragment is destroyed
+    private fun updateUI() {
+        if (!isAdded) return
+
+        val plants = plantStorage.getPlants()
+
+        if (plants.isEmpty()) {
+            recyclerView.visibility = View.GONE
+            emptyTextView.visibility = View.VISIBLE
+        } else {
+            recyclerView.visibility = View.VISIBLE
+            emptyTextView.visibility = View.GONE
+            plantAdapter.updatePlants(plants)
+        }
     }
 
     companion object {
         private const val REQUEST_ADD_PLANT = 2
         private const val REQUEST_EDIT_PLANT = 3
-        private const val REQUEST_EDIT_ROOM = 4 // Nowy kod dla edytowania rośliny
+        private const val REQUEST_EDIT_ROOM = 4
     }
 }

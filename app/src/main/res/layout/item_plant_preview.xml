@@ -14,13 +14,21 @@
         android:padding="16dp">
 
         <!-- Obrazek rośliny -->
-        <ImageView
-            android:id="@+id/image_plant"
+        <androidx.cardview.widget.CardView
             android:layout_width="80dp"
             android:layout_height="80dp"
+            app:cardCornerRadius="8dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="Plant Image"
-            android:scaleType="centerCrop" />
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/image_plant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@color/item"
+                android:adjustViewBounds="true"/>
+        </androidx.cardview.widget.CardView>
 
         <!-- Kontener na informacje o roślinie -->
         <LinearLayout

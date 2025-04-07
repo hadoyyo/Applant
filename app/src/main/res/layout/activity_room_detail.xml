@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/room_details"
-        android:textStyle="bold"
+        android:fontFamily="@font/delta"
         android:textColor="@color/purple"
         android:textSize="20dp"
         android:layout_marginHorizontal="35dp"
@@ -38,18 +38,30 @@
         android:paddingHorizontal="32dp"
         android:paddingBottom="16dp">
 
-        <ImageView
-            android:id="@+id/image_preview"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/room_1"
-            android:layout_gravity="center" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/room_1"
+                android:scaleType="centerCrop"
+                android:background="@color/background"
+                android:adjustViewBounds="true"/>
+        </androidx.cardview.widget.CardView>
+
 
         <Button
             android:id="@+id/button_edit_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_image"
+            android:fontFamily="@font/delta"
             android:layout_gravity="center"
             app:backgroundTint="@drawable/button_background"
             android:textColor="@color/button"
@@ -61,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -82,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -103,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/plants_assigned"
-            android:textStyle="bold"
+            android:fontFamily="@font/delta"
             android:textColor="@color/purple"
             android:textSize="15dp"
             android:layout_gravity="top|start"
@@ -115,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/no_plants_assigned"
+            android:fontFamily="@font/delta"
             android:textColor="@color/text"
             android:textSize="15dp"
             android:visibility="gone"
@@ -126,7 +139,8 @@
             android:id="@+id/recycler_view_plants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:fontFamily="@font/delta"
+            android:layout_marginTop="5dp"/>
 
         <Button
             android:id="@+id/button_add_plant"
@@ -135,6 +149,7 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:text="@string/add_plant"
+            android:fontFamily="@font/delta"
             app:backgroundTint="@color/green"
             android:textColor="@color/button"/>
 
@@ -144,6 +159,8 @@
             android:layout_height="wrap_content"
             android:text="@string/water_all"
             android:visibility="gone"
+            android:textSize="12dp"
+            android:fontFamily="@font/delta"
             android:layout_gravity="center"
             app:backgroundTint="@drawable/button_background"
             android:textColor="@color/button"
@@ -162,6 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save_changes"
+            android:fontFamily="@font/delta"
             app:backgroundTint="@drawable/button_background"
             android:textColor="@color/button"
             android:layout_marginEnd="10dp"/>
@@ -172,6 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remove_room"
+            android:fontFamily="@font/delta"
             android:backgroundTint="@android:color/holo_red_light"
             android:textColor="@color/button"/>
     </LinearLayout>
