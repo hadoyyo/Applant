@@ -46,13 +46,12 @@ Device with Android 8.0 (SDK 26) or later.
 3. install the application.
 
 ## Screenshots
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
-    <img src="./ss/ss1.jpg" width="49%"/> <img src="./ss/ss2.jpg" width="49%"/>
-    <img src="./ss/ss3.jpg" width="49%"/> <img src="./ss/ss4.jpg" width="49%"/>
-    <img src="./ss/ss5.jpg" width="49%"/> <img src="./ss/ss6.jpg" width="49%"/>
-    <img src="./ss/ss7.jpg" width="49%"/> <img src="./ss/ss8.jpg" width="49%"/>
-    <img src="./ss/ss9.jpg" width="49%"/> <img src="./ss/ss10.jpg" width="49%"/>
-    <img src="./ss/ss11.jpg" width="49%"/> <img src="./ss/ss12.jpg" width="49%"/>
-    <img src="./ss/ss13.jpg" width="49%"/> <img src="./ss/ss14.jpg" width="49%"/>
-</div>
+<img src="./ss/ss1.jpg" width="49%"/> <img src="./ss/ss2.jpg" width="49%"/>
+<img src="./ss/ss3.jpg" width="49%"/> <img src="./ss/ss4.jpg" width="49%"/>
+<img src="./ss/ss5.jpg" width="49%"/> <img src="./ss/ss6.jpg" width="49%"/>
+<img src="./ss/ss7.jpg" width="49%"/> <img src="./ss/ss8.jpg" width="49%"/>
+<img src="./ss/ss9.jpg" width="49%"/> <img src="./ss/ss10.jpg" width="49%"/>
+<img src="./ss/ss11.jpg" width="49%"/> <img src="./ss/ss12.jpg" width="49%"/>
+<img src="./ss/ss13.jpg" width="49%"/> <img src="./ss/ss14.jpg" width="49%"/>
+
 
