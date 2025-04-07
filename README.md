@@ -1,7 +1,7 @@
 # Applant - app for Android devices to make taking care of plants easier
 
 <div align="center">
-  <img src="./ss/logo.png"/>
+  <img width="50%" src="./ss/logo.png"/>
 </div>
 
 ## Table of Contents
