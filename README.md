@@ -43,7 +43,7 @@ Device with Android 8.0 (SDK 26) or later.
 
 1. Download the `Applant.apk` file.
 2. Give your browser permission to install the application from unknown sources.
-3. install the application.
+3. Install the application.
 
 ## Screenshots
 <img src="./ss/ss1.jpg" width="49%"/> <img src="./ss/ss2.jpg" width="49%"/>
