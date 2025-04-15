@@ -27,7 +27,7 @@ Applant is an application that allows you to manage and control the activities y
 - ⏰ Notifications informing about the need to water a particular plant and the ability to set the time at which we are to receive these notifications 
 - 🌙 Dark mode of the application 
 - 🌍 2 language versions (English, Polish) 
-- 📱 Compatibility with different types of devices that can install .apk files (phones, tablets, laptops ChromeOS)
+- 📱 Compatibility with different types of devices that can install .apk files (phones, tablets, ChromeOS laptops)
 
 ## Technologies
 - Kotlin
