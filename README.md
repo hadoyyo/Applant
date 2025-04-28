@@ -13,7 +13,9 @@
 - 📸 [Screenshots](#screenshots)
 
 ## Project Overview
-Applant is an application that allows you to manage and control the activities you perform with houseplants. Its operation is supported by an external API, which enables the implementation of many helpful functionalities. **The application is available in English language version!**
+Applant is an application that allows you to manage and control the activities you perform with houseplants. Its operation is supported by an external API, which enables the implementation of many helpful functionalities.
+> [!NOTE]  
+> The application is available in English language version!
 
 ## Features
 - 🌱 Adding, deleting and editing owned plants
@@ -35,8 +37,9 @@ Applant is an application that allows you to manage and control the activities y
 - Pl@ntNet API for developers
 
 ## Requirements
-
 Device with Android 8.0 (SDK 26) or later.
+> [!WARNING]  
+> Compatibility with earlier versions has not been tested.
 
 ## Setup Instructions
 (The application is not available on Google Play at this time)
