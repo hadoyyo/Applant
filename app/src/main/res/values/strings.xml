@@ -28,6 +28,8 @@
 
     <string name="no_room_assigned">No room assigned</string>
     <string name="requires_watering">Requires watering!</string>
+    <string name="days_until_watering">Water in %d days</string>
+    <string name="day_until_watering">Water tomorrow</string>
     <string name="watering_every_day">Watering every day</string>
     <string name="watering_every_x_days">Watering every %d days</string>
 
@@ -114,7 +116,7 @@
     <string name="plant_details">Plant details</string>
     <string name="room_details">Room details</string>
 
-    <string name="version">pplant 1.4.3</string>
+    <string name="version">pplant 1.4.4</string>
 
 
     <string name="add_photo_to_identify">Add a photo of the plant to enable identification</string>

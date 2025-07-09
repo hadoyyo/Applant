@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -360,13 +361,59 @@ class RoomDetailActivity : AppCompatActivity() {
                 textRoom.text = plant.room?.name ?: getString(R.string.no_room_assigned)
 
                 val textWateringInterval = view.findViewById<TextView>(R.id.text_watering_interval)
+                textWateringInterval.setTextColor(ContextCompat.getColor(context, R.color.text))
+                textWateringInterval.setTypeface(null, Typeface.NORMAL)
+                textWateringInterval.visibility = View.VISIBLE
+
+                // Watering interval logic - updated version
                 if (plant.wateringIntervalDays > 0) {
-                    if (plant.wateringIntervalDays == 1) {
-                        textWateringInterval.text = getString(R.string.watering_every_day)
+                    if (plant.wateringDates.isNotEmpty()) {
+                        val sortedDates = plant.wateringDates.sortedWith(compareBy {
+                            val parts = it.split("-")
+                            Calendar.getInstance().apply {
+                                set(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
+                            }.timeInMillis
+                        })
+
+                        val lastWateringDate = sortedDates.last()
+                        val lastWateringCalendar = parseDate(lastWateringDate)
+
+                        val nextWateringCalendar = Calendar.getInstance().apply {
+                            timeInMillis = lastWateringCalendar.timeInMillis
+                            add(Calendar.DAY_OF_YEAR, plant.wateringIntervalDays)
+                        }
+
+                        val currentDate = Calendar.getInstance().apply {
+                            set(Calendar.HOUR_OF_DAY, 0)
+                            set(Calendar.MINUTE, 0)
+                            set(Calendar.SECOND, 0)
+                            set(Calendar.MILLISECOND, 0)
+                        }
+
+                        nextWateringCalendar.set(Calendar.HOUR_OF_DAY, 0)
+                        nextWateringCalendar.set(Calendar.MINUTE, 0)
+                        nextWateringCalendar.set(Calendar.SECOND, 0)
+                        nextWateringCalendar.set(Calendar.MILLISECOND, 0)
+
+                        if (!currentDate.before(nextWateringCalendar)) {
+                            textWateringInterval.text = getString(R.string.requires_watering)
+                            textWateringInterval.setTextColor(ContextCompat.getColor(context, R.color.blue))
+                            textWateringInterval.setTypeface(null, Typeface.BOLD)
+                        } else {
+                            val daysRemaining = ((nextWateringCalendar.timeInMillis - currentDate.timeInMillis) / (1000 * 60 * 60 * 24)).toInt()
+                            textWateringInterval.text = when (daysRemaining) {
+                                1 -> getString(R.string.day_until_watering)
+                                else -> getString(R.string.days_until_watering, daysRemaining)
+                            }
+                        }
                     } else {
-                        textWateringInterval.text = getString(R.string.watering_every_x_days, plant.wateringIntervalDays)
+                        // No watering dates - just show interval
+                        textWateringInterval.text = if (plant.wateringIntervalDays == 1) {
+                            getString(R.string.watering_every_day)
+                        } else {
+                            getString(R.string.watering_every_x_days, plant.wateringIntervalDays)
+                        }
                     }
-                    textWateringInterval.visibility = View.VISIBLE
                 } else {
                     textWateringInterval.visibility = View.GONE
                 }
@@ -385,6 +432,13 @@ class RoomDetailActivity : AppCompatActivity() {
                 }
 
                 return view
+            }
+
+            private fun parseDate(dateString: String): Calendar {
+                val parts = dateString.split("-")
+                return Calendar.getInstance().apply {
+                    set(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
+                }
             }
         }
 

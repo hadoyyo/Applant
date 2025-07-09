@@ -47,7 +47,6 @@ class PlantAdapter(private var plants: List<Plant>) :
         val plant = plants[position]
         val context = holder.itemView.context
 
-        // Załaduj zdjęcie
         if (plant.isDefaultImage) {
             plant.defaultImageResId?.also { resId ->
                 holder.imageView.setImageResource(resId)
@@ -69,7 +68,6 @@ class PlantAdapter(private var plants: List<Plant>) :
             holder.itemView.context.startActivity(intent)
         }
 
-        // Pokój (jeśli istnieje)
         val room = plant.room
         if (room != null) {
             holder.roomTextView.text = context.getString(R.string.room) + ": ${room.name}"
@@ -77,15 +75,12 @@ class PlantAdapter(private var plants: List<Plant>) :
             holder.roomTextView.text = context.getString(R.string.no_room_assigned)
         }
 
-        // Resetowanie stanu TextView przed ustawieniem nowych wartości
-        holder.wateringIntervalTextView.setTextColor(ContextCompat.getColor(context, R.color.text)) // Ustaw domyślny kolor tekstu
-        holder.wateringIntervalTextView.setTypeface(null, Typeface.NORMAL) // Resetuj styl czcionki
-        holder.wateringIntervalTextView.visibility = View.VISIBLE // Domyślnie widoczny
+        holder.wateringIntervalTextView.setTextColor(ContextCompat.getColor(context, R.color.text))
+        holder.wateringIntervalTextView.setTypeface(null, Typeface.NORMAL)
+        holder.wateringIntervalTextView.visibility = View.VISIBLE
 
-        // Częstotliwość podlewania (tylko jeśli zdefiniowana)
         if (plant.wateringIntervalDays > 0) {
             if (plant.wateringDates.isNotEmpty()) {
-                // Sortowanie dat przed wybraniem ostatniej
                 val sortedDates = sortDates(plant.wateringDates)
                 val lastWateringDate = sortedDates.last()
                 val lastWateringCalendar = parseDate(lastWateringDate)
@@ -95,45 +90,39 @@ class PlantAdapter(private var plants: List<Plant>) :
                     add(Calendar.DAY_OF_YEAR, plant.wateringIntervalDays)
                 }
 
-                val currentDate = Calendar.getInstance()
-
-                // Ustaw godzinę, minutę, sekundę i milisekundę na 0, aby porównywać tylko daty
-                currentDate.set(Calendar.HOUR_OF_DAY, 0)
-                currentDate.set(Calendar.MINUTE, 0)
-                currentDate.set(Calendar.SECOND, 0)
-                currentDate.set(Calendar.MILLISECOND, 0)
+                val currentDate = Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, 0)
+                    set(Calendar.MINUTE, 0)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
 
                 nextWateringCalendar.set(Calendar.HOUR_OF_DAY, 0)
                 nextWateringCalendar.set(Calendar.MINUTE, 0)
                 nextWateringCalendar.set(Calendar.SECOND, 0)
                 nextWateringCalendar.set(Calendar.MILLISECOND, 0)
 
-
-                // Sprawdź, czy dzisiejsza data jest po dacie następnego podlewania
                 if (!currentDate.before(nextWateringCalendar)) {
                     holder.wateringIntervalTextView.text = context.getString(R.string.requires_watering)
                     holder.wateringIntervalTextView.setTextColor(ContextCompat.getColor(context, R.color.blue))
                     holder.wateringIntervalTextView.setTypeface(null, Typeface.BOLD)
                 } else {
-                    // Wyświetl informację o częstotliwości podlewania
-                    if (plant.wateringIntervalDays == 1) {
-                        holder.wateringIntervalTextView.text = context.getString(R.string.watering_every_day)
-                    } else {
-                        holder.wateringIntervalTextView.text = context.getString(R.string.watering_every_x_days, plant.wateringIntervalDays)
+                    val daysRemaining = ((nextWateringCalendar.timeInMillis - currentDate.timeInMillis) / (1000 * 60 * 60 * 24)).toInt()
+                    holder.wateringIntervalTextView.text = when (daysRemaining) {
+                        1 -> context.getString(R.string.day_until_watering)
+                        else -> context.getString(R.string.days_until_watering, daysRemaining)
                     }
                 }
             } else {
-                // Jeśli nie ma dat podlewania, wyświetl tylko częstotliwość
-                if (plant.wateringIntervalDays == 1) {
-                    holder.wateringIntervalTextView.text = context.getString(R.string.watering_every_day)
-                } else {
-                    holder.wateringIntervalTextView.text = context.getString(R.string.watering_every_x_days, plant.wateringIntervalDays)
+                holder.wateringIntervalTextView.text = when (plant.wateringIntervalDays) {
+                    1 -> context.getString(R.string.watering_every_day)
+                    else -> context.getString(R.string.watering_every_x_days, plant.wateringIntervalDays)
                 }
             }
         } else {
-            // Jeśli nie zdefiniowano interwału podlewania, ukryj TextView
             holder.wateringIntervalTextView.visibility = View.GONE
         }
+
     }
 
     private fun parseDate(dateString: String): Calendar {

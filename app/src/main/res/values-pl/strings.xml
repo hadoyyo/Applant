@@ -28,6 +28,8 @@
 
     <string name="no_room_assigned">Nie przypisano pokoju</string>
     <string name="requires_watering">Wymaga podlania!</string>
+    <string name="days_until_watering">Podlewanie za %d dni</string>
+    <string name="day_until_watering">Podlewanie jutro</string>
     <string name="watering_every_day">Podlewanie codziennie</string>
     <string name="watering_every_x_days">Podlewanie co %d dni</string>
 
@@ -115,7 +117,7 @@
     <string name="plant_details">Szczegóły rośliny</string>
     <string name="room_details">Szczegóły pokoju</string>
 
-    <string name="version">pplant 1.4.3</string>
+    <string name="version">pplant 1.4.4</string>
 
     <string name="add_photo_to_identify">Dodaj zdjęcie rośliny, aby umożliwić identyfikację</string>
     <string name="identification_failed">Nie udało się zidentyfikować rośliny</string>
